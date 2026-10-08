@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+/// ID, Total JSON, Search
+
+#include "Library.h"
+#include "Book.h"
+#include "BookManager.h"
+#include "RepairJson.h"
+
+#include <iostream>
+#include <fstream>
+
+int main()
+{
+    std::vector<Genre> genrelist = {Genre::Fiction, Genre::Technology};
+    {
+        Library l;
+        Book* newbook = new Book(1990, "BookName", "Long", genrelist);
+        l.addBook(newbook);
+    }
+
+    std::ifstream read("Books.json");
+    json j;
+    read >> j;
+
+
+    cout << j.dump(4) << endl;
+    return 0;
+}
